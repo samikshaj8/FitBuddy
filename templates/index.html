@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitBuddy - AI Fitness & Nutrition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <h1 class="logo">FitBuddy<span>.ai</span></h1>
+            <p class="subtitle">Your Personalized AI Fitness Coach</p>
+        </header>
+
+        <main id="main-content">
+            <!-- Setup Form -->
+            <section id="setup-section" class="card fade-in">
+                <h2>Create Your Plan</h2>
+                <form id="setup-form">
+                    <div class="input-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" required placeholder="e.g. John Doe">
+                    </div>
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="age">Age</label>
+                            <input type="number" id="age" required min="10" max="100" placeholder="e.g. 28">
+                        </div>
+                        <div class="input-group">
+                            <label for="weight">Weight (lbs/kg)</label>
+                            <input type="number" id="weight" required min="50" max="500" placeholder="e.g. 180">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="goal">Fitness Goal</label>
+                        <select id="goal" required>
+                            <option value="weight loss">Weight Loss</option>
+                            <option value="muscle gain">Muscle Gain</option>
+                            <option value="endurance">Endurance & Cardio</option>
+                            <option value="general wellness">General Wellness</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="intensity">Preferred Intensity</label>
+                        <select id="intensity" required>
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn primary" id="generate-btn">
+                        <span class="btn-text">Generate My Plan</span>
+                        <div class="loader hidden" id="generate-loader"></div>
+                    </button>
+                    <div id="setup-error" class="error-msg hidden"></div>
+                </form>
+            </section>
+
+            <!-- Results Section (Hidden initially) -->
+            <section id="results-section" class="hidden fade-in">
+                <!-- Tip Banner -->
+                <div id="tip-banner" class="tip-banner">
+                    <span class="icon">💡</span>
+                    <p id="tip-text">Loading daily tip...</p>
+                </div>
+
+                <h2>Your 7-Day Protocol</h2>
+                
+                <div id="plan-container" class="plan-grid">
+                    <!-- Days will be dynamically injected here -->
+                </div>
+
+                <div class="feedback-card">
+                    <h3>Refine Your Plan <span class="badge">AI Agent</span></h3>
+                    <p>Want more cardio? Less legs? Let FitBuddy know.</p>
+                    <div class="feedback-input">
+                        <input type="text" id="feedback-text" placeholder="e.g., Make day 3 focus on core instead">
+                        <button id="feedback-btn" class="btn secondary">
+                            <span class="btn-text" id="feedback-btn-text">Update Plan</span>
+                            <div class="loader hidden" id="feedback-loader"></div>
+                        </button>
+                    </div>
+                    <div id="feedback-error" class="error-msg hidden"></div>
+                </div>
+                
+                <button id="reset-btn" class="btn text-btn">Start Over</button>
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
